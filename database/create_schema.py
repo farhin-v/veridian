@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS stores (
     store_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     region TEXT NOT NULL,
-    channel TEXT NOT NULL,
+    store_type TEXT NOT NULL,
     opened_date TEXT NOT NULL
 )
 """)
@@ -38,7 +38,8 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER PRIMARY KEY,
     customer_id INTEGER NOT NULL,
-    store_id INTEGER NOT NULL,
+    store_id INTEGER,
+    channel TEXT NOT NULL,
     order_date TEXT NOT NULL,
     status TEXT NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers (customer_id),
